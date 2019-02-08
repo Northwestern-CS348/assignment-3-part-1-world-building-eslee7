@@ -7,6 +7,7 @@ from game_masters import *
 class KBTest(unittest.TestCase):
 
     def checkKb(self, kb, required, forbidden):
+        print('****CHECKING KB****')
         for v in required:
             self.assertTrue(kb.kb_ask(parse_input(v)), \
                 'Expected Fact cannot be found in KB: "%s"' % str(v))
@@ -15,6 +16,7 @@ class KBTest(unittest.TestCase):
                 'Unexpected Fact found in KB: "%s"' % str(v))
 
     def checkMovables(self, gm, expected):
+        print('****CHECKING MOVABLES****')
         movables = gm.getMovables()
         if expected:
             self.assertTrue(movables, \
@@ -30,6 +32,7 @@ class KBTest(unittest.TestCase):
                     % [str(x) for x in movables])
 
     def test01(self):
+        print('---------------TEST 01-----------------')
         th = TowerOfHanoiGame()
         th.read('hanoi_all_disks_on_peg_one.txt')
         expectedMovables = [
@@ -39,6 +42,7 @@ class KBTest(unittest.TestCase):
         self.checkMovables(th, expectedMovables)
 
     def test02(self):
+        print('---------------TEST 02-----------------')
         th = TowerOfHanoiGame()
         th.read('hanoi_all_disks_on_peg_one.txt')
         required = [
@@ -58,6 +62,7 @@ class KBTest(unittest.TestCase):
         self.checkKb(th.kb, required, forbidden)
 
     def test03(self):
+        print('---------------TEST 03-----------------')
         th = TowerOfHanoiGame()
         th.read('hanoi_two_smallest_on_peg_three.txt')
         expectedMovables = [
@@ -68,6 +73,7 @@ class KBTest(unittest.TestCase):
         self.checkMovables(th, expectedMovables)
 
     def test04(self):
+        print('---------------TEST 04-----------------')
         th = TowerOfHanoiGame()
         th.read('hanoi_two_smallest_on_peg_three.txt')
         required = [
@@ -91,6 +97,7 @@ class KBTest(unittest.TestCase):
         self.checkKb(th.kb, required, forbidden)
 
     def test05(self):
+        print('---------------TEST 05-----------------')
         th = TowerOfHanoiGame()
         th.read('hanoi_smallest_on_three_second_smallest_on_two.txt')
         expectedMovables = [
@@ -101,6 +108,7 @@ class KBTest(unittest.TestCase):
         self.checkMovables(th, expectedMovables)
 
     def test06(self):
+        print('---------------TEST 06-----------------')
         th = TowerOfHanoiGame()
         th.read('hanoi_smallest_on_three_second_smallest_on_two.txt')
         required = [
@@ -123,6 +131,7 @@ class KBTest(unittest.TestCase):
         self.checkKb(th.kb, required, forbidden)
 
     def test07(self):
+        print('---------------TEST 07-----------------')
         th = Puzzle8Game()
         th.read('puzzle8_top_right_empty.txt')
         expectedMovables = [
@@ -132,6 +141,7 @@ class KBTest(unittest.TestCase):
         self.checkMovables(th, expectedMovables)
 
     def test08(self):
+        print('---------------TEST 08-----------------')
         p8 = Puzzle8Game()
         p8.read('puzzle8_top_right_empty.txt')
         required = []
@@ -152,6 +162,7 @@ class KBTest(unittest.TestCase):
         self.checkKb(p8.kb, required, forbidden)
 
     def test09(self):
+        print('---------------TEST 09-----------------')
         th = Puzzle8Game()
         th.read('puzzle8_center_empty.txt')
         expectedMovables = [
@@ -163,6 +174,7 @@ class KBTest(unittest.TestCase):
         self.checkMovables(th, expectedMovables)
 
     def test10(self):
+        print('---------------TEST 10-----------------')
         p8 = Puzzle8Game()
         p8.read('puzzle8_center_empty.txt')
         required = []
